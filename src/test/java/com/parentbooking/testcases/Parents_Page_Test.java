@@ -131,7 +131,7 @@ public class Parents_Page_Test {
 		
 		//Verifying parents details using soft Assert //
 		
-		System.out.println(parentspage.Title().getText() + parentspage.surname().getText() + parentspage.surname().getAttribute("innerText")+parentspage.email().getText() + parentspage.phone().getText()+parentspage.numberOfStudent().getText());		
+		//System.out.println(parentspage.Title().getText() + parentspage.surname().getText() + parentspage.surname().getAttribute("innerText")+parentspage.email().getText() + parentspage.phone().getText()+parentspage.numberOfStudent().getText());		
 		softAssert.assertEquals(parentspage.Title().getText(),"Mr","Parent Title Incorrect");
 		softAssert.assertEquals(parentspage.firstName().getText(), "FirstNameTestParent","Inccorect first name");
 		softAssert.assertEquals(parentspage.surname().getText(), "SurNameTest","Incorrect Surname");
