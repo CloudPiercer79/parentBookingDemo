@@ -3,7 +3,7 @@ package com.parentbooking.testcases;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -31,11 +31,10 @@ public class Parents_Page_Test {
 	public void parentsPageTest() throws InterruptedException {
 		WebDriverWait  wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 		SoftAssert softAssert = new SoftAssert();
+		Actions actions = new Actions(driver);
 		
-		
-		
+		actions.moveToElement(parentspage.parentPageLink()).click().build().perform();
 		// Clicking on Parents link from the side pane //
-		parentspage.parentPageLink().click();
 		
 		wait.until(ExpectedConditions.visibilityOf(parentspage.addNewParentButton()));
 		// Checking for the title of the parents page//
@@ -49,96 +48,99 @@ public class Parents_Page_Test {
 	public void addNewParentsTest() throws InterruptedException {
 		WebDriverWait  wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 		SoftAssert softAssert = new SoftAssert();
+		Actions actions = new Actions(driver);
 		
-		action.scrollToElement(parentspage.addNewParentButton());
+		//action.scrollToElement(parentspage.addNewParentButton());
+		
 		wait.until(ExpectedConditions.visibilityOf(parentspage.addNewParentButton()));
-		Thread.sleep(5000);
+		actions.moveToElement(parentspage.addNewParentButton()).click().build().perform();
 		// Clicking on Add new parents button //
-		parentspage.addNewParentButton().click();
 		
-		action.scrollToElement(parentspage.addNewStudentbutton());
+		actions.moveToElement(parentspage.addNewStudentbutton());
+		//action.scrollToElement(parentspage.addNewStudentbutton());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.addNewStudentbutton()));	
 		//Checking title of Create Parent & Student page //
+		
 		softAssert.assertEquals(driver.getTitle(),"Parents Booking | Create Parent & Student","Title is not Matching at Create Parent & Student page");
 		
 		
-		action.scrollToElement(parentspage.titleTextBoxParent());
+		//action.scrollToElement(parentspage.titleTextBoxParent());
 		wait.until(ExpectedConditions.elementToBeClickable(parentspage.titleTextBoxParent()));	
-		parentspage.titleTextBoxParent().click();
-		parentspage.titleTextBoxParent().sendKeys("Mr"); // Adding title //
+		actions.moveToElement(parentspage.titleTextBoxParent()).click().sendKeys("Mr").build().perform(); // Adding title //
 		
-		action.scrollToElement(parentspage.firstNameTextBoxParent());
+		//action.scrollToElement(parentspage.firstNameTextBoxParent());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.firstNameTextBoxParent()));	
-		parentspage.firstNameTextBoxParent().click();
-		parentspage.firstNameTextBoxParent().sendKeys("FirstNameTestParent"); // Adding first name //
+		actions.moveToElement(parentspage.firstNameTextBoxParent()).click().sendKeys("First Name").build().perform(); // Adding first name //
 		
 		
-		action.scrollToElement(parentspage.surNameTextBoxParent());
+		//action.scrollToElement(parentspage.surNameTextBoxParent());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.surNameTextBoxParent()));	
-		parentspage.surNameTextBoxParent().click();
-		parentspage.surNameTextBoxParent().sendKeys("SurNameTest"); // Adding surname //
+		actions.moveToElement(parentspage.surNameTextBoxParent()).click().sendKeys("Sur Name").build().perform();// Adding surname //
 		
-		action.scrollToElement(parentspage.emailTextBoxParent());
+		//action.scrollToElement(parentspage.emailTextBoxParent());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.emailTextBoxParent()));
-		parentspage.emailTextBoxParent().click();
-		parentspage.emailTextBoxParent().sendKeys("testemail@gmail.com"); // adding email //
+		actions.moveToElement(parentspage.emailTextBoxParent()).click().sendKeys("testemail@gmail.com").build().perform();// adding email //
 		
-		action.scrollToElement(parentspage.phoneTextBoxParent());
+		//action.scrollToElement(parentspage.phoneTextBoxParent());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.phoneTextBoxParent()));
-		parentspage.phoneTextBoxParent().click();
-		parentspage.phoneTextBoxParent().sendKeys("9876543210"); // adding phone number //
+		actions.moveToElement(parentspage.phoneTextBoxParent()).click().sendKeys("9876543210").build().perform();// adding phone number //
 		
-		action.scrollToElement(parentspage.addNewStudentbutton());
+		//action.scrollToElement(parentspage.addNewStudentbutton());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.addNewStudentbutton()));
 		//Clicking  on add new student button //
-		parentspage.addNewStudentbutton().click();
+		actions.moveToElement(parentspage.addNewStudentbutton()).click().build().perform();//
+
 		
-		action.scrollToElement(parentspage.firstNameStudent());
+		//action.scrollToElement(parentspage.firstNameStudent());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.firstNameStudent()));
-		parentspage.firstNameStudent().click();
-		parentspage.firstNameStudent().sendKeys("StudentFirstname"); // Adding student name //
+		actions.moveToElement(parentspage.firstNameStudent()).click().sendKeys("StudentFirstname").build().perform(); // Adding student name //
 		
-		action.scrollToElement(parentspage.surNameStudent());
+		//action.scrollToElement(parentspage.surNameStudent());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.surNameStudent()));
-		parentspage.surNameStudent().click();
-		parentspage.surNameStudent().sendKeys("Studentsurname"); // Adding student surname //
+		actions.moveToElement(parentspage.surNameStudent()).click().sendKeys("Studentsurname").build().perform(); // Adding Sur name //
+
 		
-		action.scrollToElement(parentspage.classStudent());
+		//action.scrollToElement(parentspage.classStudent());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.classStudent()));
-		parentspage.classStudent().click();
-		parentspage.classStudent().sendKeys("3A"); // Adding student class //
+		actions.moveToElement(parentspage.classStudent()).click().sendKeys("3A").build().perform(); // Adding student class //
 		
-		action.scrollToElement(parentspage.yearStudent());
+		//action.scrollToElement(parentspage.yearStudent());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.yearStudent()));
-		parentspage.yearStudent().click();
-		parentspage.yearStudent().sendKeys("2021"); // Adding student year group //
+		actions.moveToElement(parentspage.yearStudent()).click().sendKeys("2021").build().perform(); // Adding student year group //
 		
-		action.scrollToElement(parentspage.dobStudent());
+		//action.scrollToElement(parentspage.dobStudent());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.dobStudent()));
-		parentspage.dobStudent().click(); // Clicking og DOB text field //
+		actions.moveToElement(parentspage.dobStudent()).click().build().perform(); // Clicking og DOB text field //
 		
-		action.scrollToElement(parentspage.monthPicker());
+		//action.scrollToElement(parentspage.monthPicker());
+
 		wait.until(ExpectedConditions.visibilityOf(parentspage.monthPicker()));
 
 		// Selecting month of the student //
+		actions.moveToElement(parentspage.monthPicker()).perform();
+
 		Select monthDropdown = new Select(parentspage.monthPicker());  
 		monthDropdown.selectByIndex(5);
 		
-		action.scrollToElement(parentspage.yearPicker());
+		//action.scrollToElement(parentspage.yearPicker());
+		
 		wait.until(ExpectedConditions.visibilityOf(parentspage.yearPicker()));
 		//Selecting year of birth //
+		actions.moveToElement(parentspage.yearPicker()).perform(); 
+
 		Select yearDropdown = new Select(parentspage.yearPicker());
 		yearDropdown.selectByValue("1999");
 		
 		// Clicking on date //
-		action.scrollToElement(parentspage.datePicker());
+		//action.scrollToElement(parentspage.datePicker());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.datePicker()));
-		parentspage.datePicker().click();
+		actions.moveToElement(parentspage.datePicker()).click().build().perform(); 
+
 		
 		// Clicking on save button //
-		action.scrollToElement(parentspage.saveButton());
+		//action.scrollToElement(parentspage.saveButton());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.saveButton()));
-		parentspage.saveButton().click();
+		actions.moveToElement(parentspage.saveButton()).click().build().perform(); 
 		
 		softAssert.assertAll();
 		
@@ -150,53 +152,65 @@ public class Parents_Page_Test {
 	public void parentDetailsVerification() throws InterruptedException {
 		WebDriverWait  wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 		SoftAssert softAssert = new SoftAssert();
-		action.scrollToElement(parentspage.searchParent());
-		Thread.sleep(3000);
+		Actions actions = new Actions(driver);
+		
+		//action.scrollToElement(parentspage.searchParent());
+		
 		wait.until(ExpectedConditions.visibilityOf(parentspage.searchParent()));
-		parentspage.searchParent().click();
+		actions.moveToElement(parentspage.searchParent()).click().build().perform();
+
 		
 		softAssert.assertEquals(driver.getTitle(),"Parents Booking | List of Parents","Title is not Matching at Create Parent & Student page");
 	
-		action.scrollToElement(parentspage.searchByDropDown());
+		//action.scrollToElement(parentspage.searchByDropDown());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.searchByDropDown()));
-		Select yearDropdown = new Select(parentspage.searchByDropDown());
-		yearDropdown.selectByValue("1");
+		actions.moveToElement(parentspage.searchByDropDown()).build().perform();
+
+		Select searchBy = new Select(parentspage.searchByDropDown());
+		searchBy.selectByValue("1");
 		
-		action.scrollToElement(parentspage.searchParent());
+		//action.scrollToElement(parentspage.searchParent());
+		
 		wait.until(ExpectedConditions.visibilityOf(parentspage.searchParent()));
-		parentspage.searchParent().click();
-		parentspage.searchParent().sendKeys("FirstNameTestParent");
+		actions.moveToElement(parentspage.searchParent()).click().sendKeys("First Name").build().perform();
 		
 		
-		action.scrollToElement(parentspage.searchButton());
+		//action.scrollToElement(parentspage.searchButton());
+
 		wait.until(ExpectedConditions.visibilityOf(parentspage.searchButton()));
-		parentspage.searchButton().click();
+		actions.moveToElement(parentspage.searchButton()).click().build().perform();
 		
 		//Verifying parents details using soft Assert //
 		
 		//System.out.println(parentspage.Title().getText() + parentspage.surname().getText() + parentspage.surname().getAttribute("innerText")+parentspage.email().getText() + parentspage.phone().getText()+parentspage.numberOfStudent().getText());		
-		action.scrollToElement(parentspage.Title());
+		//action.scrollToElement(parentspage.Title());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.Title()));
+		actions.moveToElement(parentspage.Title()).build().perform();
 		softAssert.assertEquals(parentspage.Title().getText(),"Mr","Parent Title Incorrect");
 		
-		action.scrollToElement(parentspage.firstName());
+		//action.scrollToElement(parentspage.firstName());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.firstName()));
-		softAssert.assertEquals(parentspage.firstName().getText(), "FirstNameTestParent","Inccorect first name");
+		actions.moveToElement(parentspage.firstName()).build().perform();
+		softAssert.assertEquals(parentspage.firstName().getText(), "First Name","Inccorect first name");
 		
-		action.scrollToElement(parentspage.surname());
+		//action.scrollToElement(parentspage.surname());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.surname()));
-		softAssert.assertEquals(parentspage.surname().getText(), "SurNameTest","Incorrect Surname");
+		actions.moveToElement(parentspage.surname()).build().perform();
+		softAssert.assertEquals(parentspage.surname().getText(), "Sur Name","Incorrect Surname");
 		
-		action.scrollToElement(parentspage.email());
+		//action.scrollToElement(parentspage.email());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.email()));
+		actions.moveToElement(parentspage.email()).build().perform();
 		softAssert.assertEquals(parentspage.email().getText(), "testemail@gmail.com","Incorrect Email");
 		
-		action.scrollToElement(parentspage.phone());
+		//action.scrollToElement(parentspage.phone());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.phone()));
+		actions.moveToElement(parentspage.phone()).build().perform();
 		softAssert.assertEquals(parentspage.phone().getText(), "9876543210","Incorrect phone number");
 		
-		action.scrollToElement(parentspage.numberOfStudent());
+		//action.scrollToElement(parentspage.numberOfStudent());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.numberOfStudent()));
+		actions.moveToElement(parentspage.numberOfStudent()).build().perform();
 		softAssert.assertEquals(parentspage.numberOfStudent().getText(), "1","Incorrect student count");
 		
 		softAssert.assertAll();

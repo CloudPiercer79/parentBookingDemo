@@ -78,35 +78,44 @@ public class Login_Page_Test {
 		/* Dynamic wait */
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+		Actions actions = new Actions(driver);
+		
 		/* waiting for element to be visible making sure the element is loaded */
 		wait.until(ExpectedConditions.visibilityOf(loginpage.username()));
 		SoftAssert softAssert = new SoftAssert();
+		
 		// Checking for the title of the application//
 		softAssert.assertEquals(driver.getTitle(), "Login | Parents Booking", "Title is not Matching at login page");
 
 		wait.until(ExpectedConditions.visibilityOf(loginpage.acceptCookies()));
+		
 		//* Accepting cookies element */
-		action.scrollToElement(loginpage.acceptCookies());
+		//action.scrollToElement(loginpage.acceptCookies());
+		
+		actions.moveToElement(loginpage.acceptCookies()).click().build().perform();
 		loginpage.acceptCookies().click();
 
 		// Entering user name//
-		action.scrollToElement(loginpage.username());
-		loginpage.username().click();
+		//action.scrollToElement(loginpage.username());
+		
+		actions.moveToElement(loginpage.username()).click().build().perform();
 		loginpage.username().sendKeys(LoadProperties.getInstance().getProperty("username"));
 
 		// Entering Password //
-		action.scrollToElement(loginpage.password());
-		Thread.sleep(5000);
-//		JavascriptExecutor jse = (JavascriptExecutor) driver;
-//		jse.executeScript("document.getElementById('fauxPassword').value='test';");
+		//action.scrollToElement(loginpage.password());
+		
+		actions.moveToElement(loginpage.password()).perform();
+
 		wait.until(ExpectedConditions.visibilityOf(loginpage.password()));
-		Actions keyboardActions = new Actions(driver);
-		keyboardActions.sendKeys(loginpage.password(), "test").perform();
+		actions.sendKeys(loginpage.password(), "test").perform();
 		
 		// Clicking on login button //
-		action.scrollToElement(loginpage.loginButton());
+		//action.scrollToElement(loginpage.loginButton());
+		
 		wait.until(ExpectedConditions.visibilityOf(loginpage.loginButton()));
-		loginpage.loginButton().click();
+		actions.moveToElement(loginpage.loginButton()).click().build().perform();
+		
+		//loginpage.loginButton().click();
 		softAssert.assertEquals(driver.getTitle(), "Dashboard | Parents Booking",
 				"Title is not Matching at Dashboard page");
 		softAssert.assertAll();
