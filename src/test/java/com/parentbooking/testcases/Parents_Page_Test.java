@@ -56,9 +56,10 @@ public class Parents_Page_Test {
 		actions.moveToElement(parentspage.addNewParentButton()).click().build().perform();
 		// Clicking on Add new parents button //
 		
-		actions.moveToElement(parentspage.addNewStudentbutton());
+		
 		//action.scrollToElement(parentspage.addNewStudentbutton());
 		wait.until(ExpectedConditions.visibilityOf(parentspage.addNewStudentbutton()));	
+		actions.moveToElement(parentspage.addNewStudentbutton());
 		//Checking title of Create Parent & Student page //
 		
 		softAssert.assertEquals(driver.getTitle(),"Parents Booking | Create Parent & Student","Title is not Matching at Create Parent & Student page");
@@ -115,7 +116,6 @@ public class Parents_Page_Test {
 		//action.scrollToElement(parentspage.monthPicker());
 
 		wait.until(ExpectedConditions.visibilityOf(parentspage.monthPicker()));
-
 		// Selecting month of the student //
 		actions.moveToElement(parentspage.monthPicker()).perform();
 
